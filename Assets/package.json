@@ -1,0 +1,17 @@
+{
+    "name": "com.mgs.ioutility",
+    "version": "1.0.0",
+    "displayName": "IO Utility",
+    "description": "Utility for IO operation.",
+    "unity": "2021.3",
+    "keywords": [
+        "io",
+        "directory",
+        "file"
+    ],
+    "author": {
+        "name": "Mogoson",
+        "email": "mogoson@outlook.com",
+        "url": "https://github.com/mogoson"
+    }
+}

@@ -13,112 +13,114 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 namespace MGS.IOUtility
 {
     public sealed class FileUtility
     {
         #region
-        public static string ReadAllText(string path)
+        public static string ReadAllText(string path, out Exception error)
         {
+            error = null;
             try
             {
                 return File.ReadAllText(path);
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
+                error = ex;
                 return null;
             }
         }
 
-        public static IEnumerable<string> ReadLines(string path)
+        public static IEnumerable<string> ReadLines(string path, out Exception error)
         {
+            error = null;
             try
             {
                 return File.ReadLines(path);
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
+                error = ex;
                 return null;
             }
         }
 
-        public static byte[] ReadAllBytes(string path)
+        public static byte[] ReadAllBytes(string path, out Exception error)
         {
+            error = null;
             try
             {
                 return File.ReadAllBytes(path);
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
+                error = ex;
                 return null;
             }
         }
         #endregion
 
         #region
-        public static bool WriteAllText(string path, string contents)
+        public static Exception WriteAllText(string path, string contents)
         {
-            if (!RequireDirectory(path))
+            var error = RequireDirectory(path);
+            if (error != null)
             {
-                return false;
+                return error;
             }
 
             try
             {
                 File.WriteAllText(path, contents);
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
-                return false;
+                return ex;
             }
         }
 
-        public static bool WriteAllLines(string path, IEnumerable<string> contents)
+        public static Exception WriteAllLines(string path, IEnumerable<string> contents)
         {
-            if (!RequireDirectory(path))
+            var error = RequireDirectory(path);
+            if (error != null)
             {
-                return false;
+                return error;
             }
 
             try
             {
                 File.WriteAllLines(path, contents);
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
-                return false;
+                return ex;
             }
         }
 
-        public static bool WriteAllBytes(string path, byte[] bytes)
+        public static Exception WriteAllBytes(string path, byte[] bytes)
         {
-            if (!RequireDirectory(path))
+            var error = RequireDirectory(path);
+            if (error != null)
             {
-                return false;
+                return error;
             }
 
             try
             {
                 File.WriteAllBytes(path, bytes);
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
-                return false;
+                return ex;
             }
         }
 
-        public static bool RequireDirectory(string path)
+        public static Exception RequireDirectory(string path)
         {
             var dir = Path.GetDirectoryName(path);
             return DirectoryUtility.Require(dir);

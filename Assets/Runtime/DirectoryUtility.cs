@@ -12,47 +12,44 @@
 
 using System;
 using System.IO;
-using UnityEngine;
 
 namespace MGS.IOUtility
 {
     public sealed class DirectoryUtility
     {
-        public static bool Require(string path)
+        public static Exception Require(string path)
         {
             if (Directory.Exists(path))
             {
-                return true;
+                return null;
             }
 
             try
             {
                 Directory.CreateDirectory(path);
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
-                return false;
+                return ex;
             }
         }
 
-        public static bool Delete(string path)
+        public static Exception Delete(string path)
         {
             if (!Directory.Exists(path))
             {
-                return true;
+                return null;
             }
 
             try
             {
                 Directory.Delete(path);
-                return true;
+                return null;
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
-                return false;
+                return ex;
             }
         }
     }

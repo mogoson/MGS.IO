@@ -13,7 +13,7 @@
 using System;
 using System.IO;
 
-namespace MGS.IOUtility
+namespace MGS.IO
 {
     public sealed class DirectoryUtility
     {
@@ -44,7 +44,7 @@ namespace MGS.IOUtility
 
             try
             {
-                Directory.Delete(path);
+                Directory.Delete(path, true);
                 return null;
             }
             catch (Exception ex)

@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MGS.IOUtility
+namespace MGS.IO
 {
     public sealed class FileUtility
     {

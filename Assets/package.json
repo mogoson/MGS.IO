@@ -1,8 +1,8 @@
 {
-    "name": "com.mgs.ioutility",
+    "name": "com.mgs.io",
     "version": "1.0.0",
-    "displayName": "IO Utility",
-    "description": "Utility for IO operation.",
+    "displayName": "IO",
+    "description": "IO operation.",
     "unity": "2021.3",
     "keywords": [
         "io",

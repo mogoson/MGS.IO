@@ -1,6 +1,6 @@
 {
-    "name": "MGS.IOUtility",
-    "rootNamespace": "MGS.IOUtility",
+    "name": "MGS.IO",
+    "rootNamespace": "MGS.IO",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

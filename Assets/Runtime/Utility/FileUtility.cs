@@ -19,6 +19,39 @@ namespace MGS.IO
     public sealed class FileUtility
     {
         #region
+        public static FileStream Create(string path, out Exception error)
+        {
+            error = null;
+            try
+            {
+                return File.Create(path);
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+                return null;
+            }
+        }
+
+        public static Exception Delete(string path)
+        {
+            if (!File.Exists(path))
+            {
+                return null;
+            }
+            try
+            {
+                File.Delete(path);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+        #endregion
+
+        #region
         public static string ReadAllText(string path, out Exception error)
         {
             error = null;
